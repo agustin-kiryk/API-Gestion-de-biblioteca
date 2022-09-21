@@ -8,7 +8,7 @@ public interface PersonaService {
 
     List<PersonaDTO> findAll();
     PersonaDTO findById(Long id);
-    PersonaDTO Save(Long id);
+    PersonaDTO save(PersonaDTO dto);
     PersonaDTO update(Long id, PersonaDTO persona);
     void delete(Long id);
 
