@@ -1,9 +1,11 @@
 package com.example.apirest.DTO;
 
+import com.example.apirest.entity.LibroEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,6 +17,7 @@ public class PersonaDTO {
     @NotEmpty(message = "El apellido no puede estar vacio, por favor ingrese uno")
     private String apellido;
     private String dni;
+    private List<LibroDTO> libros;
 
 
 }
