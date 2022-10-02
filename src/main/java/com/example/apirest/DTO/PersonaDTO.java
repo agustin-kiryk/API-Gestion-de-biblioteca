@@ -1,5 +1,6 @@
 package com.example.apirest.DTO;
 
+import com.example.apirest.entity.DomicilioEntity;
 import com.example.apirest.entity.LibroEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class PersonaDTO {
     @NotEmpty(message = "El apellido no puede estar vacio, por favor ingrese uno")
     private String apellido;
     private String dni;
+    private DomicilioEntity domicilio;
     private List<LibroDTO> libros;
 
 

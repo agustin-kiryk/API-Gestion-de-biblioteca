@@ -15,6 +15,7 @@ public class PersonaMapper {
         personaEntity.setNombre(dto.getNombre());
         personaEntity.setApellido(dto.getApellido());
         personaEntity.setDni(dto.getDni());
+        personaEntity.setDomicilio(dto.getDomicilio());
         return personaEntity;
     }
 
@@ -24,6 +25,7 @@ public class PersonaMapper {
         dto.setNombre(entity.getNombre());
         dto.setApellido(entity.getApellido());
         dto.setDni(entity.getDni());
+        dto.setDomicilio(entity.getDomicilio());
         return dto;
     }
 

@@ -20,7 +20,7 @@ public class AutorServiceImpl implements AutorService {
     @Override
     public List<AutorDTO> findAll() {
         List<AutorEntity> entities = this.autorRepository.findAll();
-        List<AutorDTO> result = this.autorMapper.autorListEntity2DTOList(entities);
+        List<AutorDTO> result = this.autorMapper.autorEntityList2DTOList(entities);
         return result;
     }
     @Override
