@@ -2,6 +2,7 @@ package com.example.apirest.service.Implementacion;
 
 import com.example.apirest.DTO.LocalidadDTO;
 import com.example.apirest.entity.LocalidadEntity;
+import com.example.apirest.exception.ParamNotFound;
 import com.example.apirest.mapper.LocalidadMapper;
 import com.example.apirest.repository.LocalidadRepository;
 import com.example.apirest.service.LocalidadService;
@@ -28,22 +29,29 @@ public class LocalidadServiceImpl implements LocalidadService {
         LocalidadEntity entity = localidadMapper.localidadDTO2Entity(dto);
         LocalidadEntity entitySaved = this.localidadRepository.save(entity);
         LocalidadDTO result = localidadMapper.localidadEntity2DTO(entitySaved);
-
         return result;
     }
-
     @Override
     public LocalidadDTO findById(Long id) {
-        return null;
+        LocalidadEntity entity = this.localidadRepository.findById(id).orElseThrow(
+                ()-> new ParamNotFound("El ID de la localidad no existe"));
+        LocalidadDTO dto = localidadMapper.localidadEntity2DTO(entity);
+        return dto;
     }
-
     @Override
-    public LocalidadDTO update(Long id, LocalidadDTO localidad) {
-        return null;
+    public LocalidadDTO update(Long id, LocalidadDTO dto) {
+        LocalidadEntity entityOld = this.localidadRepository.findById(id).orElseThrow(
+                ()-> new ParamNotFound("El ID de localidad no existe"));
+        LocalidadEntity entityUpdate = localidadMapper.localidadDTO2Entity(dto);
+        entityUpdate.setId(dto.getId());
+        LocalidadEntity entitySaved = localidadRepository.save(entityUpdate);
+        LocalidadDTO result = localidadMapper.localidadEntity2DTO(entitySaved);
+        return result;
     }
-
     @Override
     public void delete(Long id) {
-
+        LocalidadEntity entity = this.localidadRepository.findById(id).orElseThrow(
+                ()-> new ParamNotFound("El ID de la localidad no existe"));
+        this.localidadRepository.delete(entity);
     }
 }

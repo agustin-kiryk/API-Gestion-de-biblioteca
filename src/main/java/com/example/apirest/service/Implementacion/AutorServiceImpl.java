@@ -52,6 +52,8 @@ public class AutorServiceImpl implements AutorService {
 
     @Override
     public void delete(Long id) {
-
+        AutorEntity entity = this.autorRepository.findById(id).orElseThrow(
+                ()-> new ParamNotFound("El ID del autor no existe"));
+        this.autorRepository.delete(entity);
     }
 }
